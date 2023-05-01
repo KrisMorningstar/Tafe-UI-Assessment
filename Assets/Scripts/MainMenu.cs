@@ -26,6 +26,16 @@ public class MainMenu : MonoBehaviour
     {
         _value.text = EventSystem.current.currentSelectedGameObject.GetComponent<Slider>().value.ToString();
     }
+    
+    public void MusicSlider(AudioSource _audioSource)
+    {
+        _audioSource.volume = (EventSystem.current.currentSelectedGameObject.GetComponent<Slider>().value)/200;
+    }
+    public void MasterSlider(AudioSource _audioSource)
+    {
+        // proof of concept, will be blended in full version
+        _audioSource.volume = (EventSystem.current.currentSelectedGameObject.GetComponent<Slider>().value)/200;
+    }
 
     public void ToggleSwitch(GameObject _light)
     {
@@ -86,10 +96,11 @@ public class MainMenu : MonoBehaviour
 
     public IEnumerator Subtitles()
     {
-        // make cancellable
+        // make cancellable in polished version
         subBar.SetActive(true);
         yield return new WaitForSeconds(1);
         subBar.SetActive(false);
         yield return null;
     }
+
 }
